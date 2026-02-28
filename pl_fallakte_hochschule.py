@@ -2,6 +2,7 @@
 1.
 ===============================================================================
 Fallakte - Sachgebiet: Hochschule
+Karl Franke DVM25
 ===============================================================================
 
 2.
@@ -29,7 +30,7 @@ def validiere_datum(date_str):
     # 1. Leerzeichen entfernen
     date_str = date_str.strip()
     
-    # 2. Länge grob prüfen (z.B. 10 Zeichen: 01.01.2000)
+    # 2. Länge grob prüfen (z.B. 10 Zeichen: 01.01.2000) 
     if len(date_str) != 10:
         print("Länge ungültig. Format muss TT.MM.JJJJ sein.")
         return False
@@ -85,7 +86,7 @@ def validiere_datum(date_str):
 
 def validiere_name(name_str):
     """
-    str (Nur Buchstaben(+ Umlaute, Leerzeichen) evtl. Umlaute, Bindestriche - min. 2 Zeichen)
+    str (Nur Buchstaben(+ Umlaute, Leerzeichen) Bindestriche - min. 2 Zeichen)
     Ausgabe: True o. False
     """
     name_str = name_str.strip()
@@ -323,6 +324,15 @@ def zeige_fall_aus_liste(list, Listenposition):
         return
     print(f"X: Keine Fallakte mit Listenposition {Listenposition} gefunden.")
 
+def zeige_erste_person(list):
+
+    if len(list) == 0:
+        print("\n  Keine Fallakten in der Liste vorhanden.")
+        return
+    
+    zeige_fall_aus_liste(list, 0)
+
+
 #===============================================================================
 # Programm:
 #===============================================================================
@@ -340,7 +350,8 @@ while True:
     print("3. Alle Fälle anzeigen (Dictionary)")
     print("4. Zeige Fall aus Liste")
     print("5. Zeige Fall aus Dictionary")
-    print("6. Beenden")
+    print("6. Zeige erste Person aus Liste")
+    print("7. Beenden")
     
     auswahl = input("\nIhre Auswahl: ")
     
@@ -371,6 +382,9 @@ while True:
         zeige_fall_aus_dict(fallakten_dict, mat_num)
         
     elif auswahl == "6":
+        zeige_erste_person(fallakten_liste)
+        
+    elif auswahl == "7":
         print("Auf Wiedersehen!")
         break
     else:
